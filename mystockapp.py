@@ -34,8 +34,11 @@ def main():
             st.error("Invalid stock symbol. Please enter a valid symbol.")
 
     # Date range slider
-    start_date = st.date_input("Start Date", pd.to_datetime("2010-01-01"))
-    end_date = st.date_input("End Date", pd.to_datetime("today"))
+    col1, col2 = st.columns(2)
+    with col1:
+        start_date = st.date_input("Start Date", pd.to_datetime("2007-01-01"))
+    with col2:
+        end_date = st.date_input("End Date", pd.to_datetime("today"))
 
     # Button to retrieve historical stock data
     if st.button("Get Historical Data"):
@@ -49,7 +52,7 @@ def main():
                 
                 # Display historical data
                 st.subheader("Historical Prices Table")
-                st.write(ticker_data, width=1000)
+                st.write(ticker_data, width=2000)
 
                 # Plot closing price
                 st.subheader("Historical Closing Price")
